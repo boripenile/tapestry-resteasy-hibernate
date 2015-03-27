@@ -1,6 +1,20 @@
 # tapestry-resteasy-hibernate
 Small example using Tapestry, RESTEasy and Hibernate
 
+# Test the application
+
+1. git clone https://github.com/oliverbauer/tapestry-resteasy-hibernate.git
+2. cd tapestry-resteasy-hibernate
+3. mvn clean jetty:run
+4. curl -H "Content-Type: application/json" -d '{"mail":"mymail","name":"name","password":"password"}' http://localhost:8080/tapestry-resteasy-example/rest/user/create -i
+
+  This should give a 200
+5. curl http://localhost:8080/tapestry-resteasy-example/rest/user/read/mymail -i
+
+  This should give a 200
+
+# How this application was created
+
 1. mvn archetype:generate -DarchetypeCatalog=http://tapestry.apache.org
 2. pom.xml updates 
    - maven-compiler-plugin version update from 1.5 to 1.8
@@ -24,15 +38,3 @@ Small example using Tapestry, RESTEasy and Hibernate
    added hibernate.cfg.xml to src/main/resources
    added methods configureRestResources and adviseTransactions in AppModule
    extended bind-method in AppModule
-
-# Test the application
-
-1. git clone https://github.com/oliverbauer/tapestry-resteasy-hibernate.git
-2. cd tapestry-resteasy-hibernate
-3. mvn clean jetty:run
-4. curl -H "Content-Type: application/json" -d '{"mail":"mail","name":"name","password":"password"}' http://localhost:8080/tapestry-resteasy-example/rest/user/create -i
-
-  This should give a 200
-5. curl http://localhost:8080/tapestry-resteasy-example/rest/user/read/1 -i
-
-  This should give a 200
